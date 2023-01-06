@@ -14,9 +14,9 @@ Features
 
 Status: *deployed to Maven Central*
 
-Maven [reports](https://davidmoten.github.io/hilbert-curve/index.html) including [javadocs](https://davidmoten.github.io/hilbert-curve/apidocs/index.html)
+Maven reports including javadocs
 
-See also [sparse-hilbert-index](https://github.com/davidmoten/sparse-hilbert-index).
+See also sparse-hilbert-index.
 
 Background
 -------------
@@ -146,7 +146,7 @@ HilbertCurveRenderer.renderToFile(bits, 800, "target/image.png");
 ### Querying N-dimensional space
 This is one of the very useful applications of the Hilbert curve. By mapping n-dimensional space onto 1 dimension we enable the use of range lookups on that 1 dimension using a B-tree or binary search. A search region represented as a box in n-dimensions can be mapped to a series of ranges on the hilbert curve. 
 
-See [sparse-hilbert-index](https://github.com/davidmoten/sparse-hilbert-index) for a library that performs hilbert index queries on n-dimensional data (that can be stored in AWS S3 for instance).
+See sparse-hilbert-index for a library that performs hilbert index queries on n-dimensional data (that can be stored in AWS S3 for instance).
 
 #### Boundary algorithm for finding ranges
 Given an n-dimensional search region **the exact hilbert curve ranges that cover the search region can be determined just by looking at the hilbert curve values on the perimeter (boundary) of the region**. *I didn't manage to find any discussion of this very useful fact on the web and am confused as to why this isn't covered in an accessible way somewhere. Surely this is not an unpublished discovery (because it's simple to show and seems obvious in retrospect). Let me know if you find discussion of this technique elsewhere!*
@@ -297,22 +297,8 @@ Benchmarks.roundTripTimes512LowAllocation       thrpt   10   3191.937 ±  48.420
 Benchmarks.toIndexTimes512                      thrpt   10   6410.679 ± 291.534  ops/s
 Benchmarks.toIndexTimes512Small                 thrpt   10   8375.023 ± 412.324  ops/s
 ```
-Credits
-----------
-Primary credit goes to John Skilling for his article "Programming the Hilbert curve" (American Institue of Physics (AIP) Conf. Proc. 707, 381 (2004)).
-
-Thanks to Paul Chernoch for his [StackOverflow answer](http://stackoverflow.com/questions/499166/mapping-n-dimensional-value-to-a-point-on-hilbert-curve) which got me most of the way there.
-
-Dave Moten's contribution:
-
-* translate the C# code to java (use `long` instead of `uint`)
-* write the bit manipulations between the transposed index and the `BigInteger` index
-* lots of unit tests
-* made a simple easy-to-read API (hopefully)
-* supplement with utilities for using a Hilbert Index with bounding box searches
 
 References
 -----------
 * Skilling, John. "Programming the Hilbert curve." AIP Conference Proceedings. Vol. 707. No. 1. AIP, 2004.
 * Lawder, Jonathan K., and Peter J. H. King. "Querying multi-dimensional data indexed using the Hilbert space-filling curve." ACM Sigmod Record 30.1 (2001): 19-24.
-
